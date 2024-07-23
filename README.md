@@ -22,3 +22,6 @@ to set study or work goals. You can ask ChatGPT to create descriptions for quest
 ![Alt text](images_for_readme/system_site_reflection_creation2.JPG)
 ### Logout page
 ![Alt text](images_for_readme/system_site_logout.JPG)
+
+#### Background image of this site was designed by Freepik
+[Link to background images](https://www.freepik.com/free-photos-vectors/blue-gaming-background)

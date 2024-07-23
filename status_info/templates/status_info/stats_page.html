@@ -1,0 +1,80 @@
+{% extends 'status_info/base.html' %}
+{% load static %}
+
+{% block title %}| Stats Page{% endblock %}
+
+{% block content %}
+<div class="text_content_wrapper glass">
+    <h2 class="text-center">Status</h2>
+    <div class="text-left py-3">
+        <p>[Name: [{{ username }}]</p>
+        <p class="flex_wrap_container" id="titles">
+            [Titles:&nbsp;&nbsp;
+            {% for title in titles %}
+            <span>
+            <a href="title_{{ title.name }}">[{{ title.name }}]</a>
+            {% if title != titles.last %}
+            ,&nbsp;&nbsp;
+            {% endif %}
+            </span>
+            {% endfor %}
+        </p>
+        <p id="current_job">
+            [Job:&nbsp;&nbsp;
+            {% if current_job.name %}
+            <a href="job_{{ current_job.name }}">[{{ current_job.name }}]</a>
+            {% endif %}
+        </p>
+        <p class="flex_wrap_container" id="jobs">
+            [Job History:&nbsp;&nbsp;
+            {% for job in jobs %}
+            <span>
+            <a href="job_{{ job.name }}">[{{ job.name }}]</a>
+            {% if job != jobs.last %}
+            ,&nbsp;&nbsp;
+            {% endif %}
+            </span>
+            {% endfor %}
+        </p>
+        <p>[Frontend: [{{ stats.frontend_stat }}]</p>
+        <p>[Backend: [{{ stats.backend_stat }}]</p>
+        <p>[Data Science: [{{ stats.data_science_stat }}]</p>
+        <p>[Data Bases: [{{ stats.data_base_stat }}]</p>
+        <p class="flex_wrap_container" id="passive_skills">
+            [Passive Skills:&nbsp;&nbsp;
+            {% for skill in passive_skills %}
+            <span>
+            <a href="skill_{{ skill.name }}">[{{ skill.name }}:&nbsp;&nbsp;{{ skill.level }}]</a>
+            {% if skill != passive_skills.last %}
+            ,&nbsp;&nbsp;
+            {% endif %}
+            </span>
+            {% endfor %}
+        </p>
+        <p class="flex_wrap_container" id="active_skills">
+            [Active Skills:&nbsp;&nbsp;
+            {% for skill in active_skills %}
+            <span>
+            <a href="skill_{{ skill.name }}">[{{ skill.name }}:&nbsp;&nbsp;Level {{ skill.level }}]</a>
+            {% if skill != active_skills.last %}
+            ,&nbsp;&nbsp;
+            {% endif %}
+            </span>
+            {% endfor %}
+        </p>
+        <p class="flex_wrap_container" id="languages">
+            [Languages comprehension:&nbsp;&nbsp;
+            {% for lang in languages %}
+            <span>
+            [{{ lang.name }}: {{ lang.comprehension }}%]
+            {% if not forloop.last %}
+            ,&nbsp;&nbsp;
+            {% endif %}
+            </span>
+            {% endfor %}
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}| Stats Page {% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'status_info/base.html' %}
+{% load static %}
+
+{% block title %}| Details Page{% endblock %}
+
+{% block content %}
+<div class="text_content_wrapper glass">
+    <div class="text-left py-3 status-info">
+        <h3>[{{ object.name }}]</h3>
+        <div class="add_data_link_wrapper">
+            <button id="update_link">Update description</button>
+        </div>
+        <br>
+        <p id="description_id">{{ object.description }}</p>
+        <form id="update_form" method="POST" class="hidden">
+            {% csrf_token %}
+            <div class="textarea_wrapper">
+                {{ form.description }}
+                <div class="the-count">
+                    <span class="current">0</span>
+                    <span class="maximum"> / 5000</span>
+                </div>
+            </div>
+            <input class="white_button" type="submit" value="Update"/>
+            <button class="white_button" id="cancel_button">Cancel</button>
+        </form>
+    </div>
+</div>
+<script>
+    form_el = document.getElementById("update_form");
+    description_el = document.getElementById("description_id");
+    update_link = document.getElementById("update_link");
+    update_link.addEventListener("click", e => {
+        event.preventDefault()
+        if (description_el.classList[0] != "hidden") {
+            description_el.setAttribute("class", "hidden");
+            form_el.setAttribute("class", "");
+        }
+    });
+
+    textarea_el = document.querySelector('textarea');
+    textarea_el.value = "{{ object.description }}";
+    textarea_el.onkeyup = function(textarea_el) { return processCounter(textarea_el) }
+    counter_current = document.querySelector('span.current');
+    counter_current.textContent = textarea_el.value.length;
+    counter_max = document.querySelector('span.maximum');
+    counter_max.textContent = ` / ${textarea_el.maxLength}`;
+
+    cancel_button = document.getElementById("cancel_button");
+    cancel_button.addEventListener("click", e => {
+        if (event) {
+            event.preventDefault();
+        }
+        description_el.setAttribute("class", "");
+        form_el.setAttribute("class", "hidden");
+     });
+
+</script>
+{% endblock %}
+
+
+{% block footer %}| Details Page {% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'status_info/base.html' %}
+{% load static %}
+
+{% block title %}| Sign Up Page{% endblock %}
+{% block links_and_scripts %}
+<link rel="stylesheet" type="text/css" href="{% static 'status_info/css/login_signup_logout.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form_wrapper glass">
+    <div class="form_box">
+        <h2>Sign up</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {% if form.username.errors %}
+            <div class="errors">{{ form.username.errors.0 }}</div>
+            {% endif %}
+            <div class="input_box">
+                {{ form.username }}
+                <label class="form-label">Username</label>
+            </div>
+            {% if form.password1.errors %}
+            <div class="errors">{{ form.password1.errors.0 }}</div>
+            {% endif %}
+            <div class="input_box">
+                {{ form.password1 }}
+                <label class="form-label">Password</label>
+            </div>
+            {% if form.password2.errors %}
+            <div class="errors">{{ form.password2.errors.0 }}</div>
+            {% endif %}
+            <div class="input_box">
+                {{ form.password2 }}
+                <label class="form-label">Confirm Password</label>
+            </div>
+            <button class="btn_primary" type="submit">Sign up</button>
+            <p class="login-signup">Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}| Sign Up Page {% endblock %}

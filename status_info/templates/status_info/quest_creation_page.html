@@ -1,0 +1,44 @@
+{% extends 'status_info/base.html' %}
+{% load static %}
+
+{% block title %}| Reflection Creation Page{% endblock %}
+
+{% block links_and_scripts %}
+<link rel="stylesheet" type="text/css" href="{% static 'status_info/css/quests_styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form_wrapper glass">
+    <div class="quest_form_box">
+        <h2>Add New Quest</h2>
+        <form method="POST" class="py-3 quest_form">
+            {% csrf_token %}
+            <div class="errors">
+                {% for error in form.non_field_errors %}
+                {{ error }}
+                {% endfor %}
+            </div>
+            <div class="input_box">
+                {{ form.name }}
+                <label>Quest Title</label>
+            </div>
+            <div class="textarea_wrapper">
+                {{ form.description }}
+                <div class="the-count">
+                    <span class="current">0</span>
+                    <span class="maximum"></span>
+                </div>
+            </div>
+            <input class="submit_button" type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+<script>
+    let allTextareas = document.getElementsByTagName('textarea');
+    for (let textareaEl of allTextareas) {
+        setUpCounter(textareaEl);
+    }
+</script>
+{% endblock %}
+
+{% block footer %}| Reflection Creation Page {% endblock %}

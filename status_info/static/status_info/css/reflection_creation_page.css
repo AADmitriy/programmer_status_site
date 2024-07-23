@@ -1,0 +1,208 @@
+/*
+This Styles are applied only to the reflection creation page
+*/
+
+.reflection_form {
+   margin: auto;
+}
+
+.reflection_text .textarea_wrapper {
+    width: 100%;
+}
+
+.data_input {
+    position: relative;
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid white;
+    text-align: center;
+}
+
+    .data_input input {
+        border-width: 2px;
+        border-style: none none solid none;
+    }
+
+    .data_input .textarea_wrapper {
+        width: 70%;
+        margin: auto;
+    }
+
+    .data_input .textarea_wrapper textarea {
+        height: 4em;
+        border-radius: 8px;
+    }
+
+.close {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+}
+
+    .close:hover {
+        color: red;
+        scale: 1.2;
+    }
+
+.add_button {
+    display: inline-flex;
+    min-height: 35px;
+    width: fit-content;
+    background-color: green;
+    color: white;
+    padding: 5px 10px 5px;
+    margin: 5px 0;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+}
+
+    .add_button i {
+        font-size: 1.5em;
+    }
+
+    .add_button i.bi-arrow-up {
+        font-size: 1.3em;
+    }
+
+    .add_button:hover {
+        background-color: darkgreen;
+    }
+
+.checkbox_label {
+    position: relative;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+    .checkbox_label input[type=checkbox] {
+        visibility: hidden;
+    }
+
+    .checkbox_label input:active~.checkbox-container {
+        background-color: red;
+    }
+
+    .checkbox_label input:checked~.checkbox-container {
+        background-color: green;
+    }
+
+    .checkbox_label:hover input~.checkbox-container {
+        background-color: yellow;
+    }
+
+    /* Display checkmark when checked */
+    .checkbox_label input:checked~.checkbox-container::after {
+        display: block;
+    }
+
+.checkbox-container {
+    position: absolute;
+    top: 25%;
+    right: 0;
+    height: 17px;
+    width: 17px;
+    background-color: transparent;
+    border: 2px solid #000;
+}
+
+    /* Checkmark */
+    .checkbox-container::after {
+        content: "";
+        position: absolute;
+        display: none;
+        right: 3.5px;
+        top: 0;
+        width: 6px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+.level_input {
+    position: relative;
+    margin: 5px;
+    padding: 5px 30px 5px 5px;
+    width: fit-content;
+}
+
+    .level_input .close {
+        top: 20%;
+    }
+
+    .level_input input[type="number"] {
+        width: 3em;
+    }
+
+.lang_form {
+    position: relative;
+    margin: 5px;
+    padding-right: 25px;
+    width: fit-content;
+}
+
+    .lang_form .close {
+        top: 15%;
+    }
+
+    .lang_form input[type="number"] {
+        width: 4em;
+    }
+
+.lang_increase_form {
+    position: relative;
+    margin: 5px;
+    padding-right: 25px;
+    width: fit-content;
+}
+
+    .lang_increase_form .close {
+        top: 11%;
+    }
+
+    .lang_increase_form input[type="number"] {
+        width: 4em;
+    }
+
+.stat_increase input {
+    width: 4em;
+}
+
+input[type="number"],
+input[type="text"] {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgb(255, 255, 255);
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+    @media(max-width: 300px) {
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+        }
+    }
+
+select {
+    background-color: transparent;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+    select option {
+        background-color: blue;
+    }
+
+.submit_button {
+    margin: 5px;
+    width: fit-content;
+    height: 35px;
+    font-size: 1.2em;
+}

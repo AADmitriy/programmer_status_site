@@ -1,0 +1,266 @@
+{% extends 'status_info/base.html' %}
+{% load static %}
+
+{% block title %}| Reflection Creation Page{% endblock %}
+
+{% block links_and_scripts %}
+<link rel="stylesheet" type="text/css" href="{% static 'status_info/css/reflection_creation_page.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="text_content_wrapper glass">
+    <h2 class="text-center">Add New Reflection</h2>
+
+    <div class="text-left py-3 reflection_form">
+        <form method="POST" action="/create_reflection" id="userinfo">
+            {% csrf_token %}
+            <div class="reflection_text">
+                {% for field in reflection_form %}
+                {{ field.label }}
+                <br>
+                {{ field }}
+                <hr>
+                {% endfor %}
+            </div>
+            <h5>New Titles:</h5>
+            <div id="title_forms">
+                {{ title_formset.management_form }}
+                <div id="titles_error_list" class="errors"></div>
+                <div id="title_form_list"></div>
+                <div id="empty_title_form" class="hidden">
+                    <div class="close" onclick="removeForm(this, 'title_form_list', 'titles')">
+                        <span class="material-icons-outlined">close</span>
+                    </div>
+                    {% for field in title_formset.empty_form %}
+                    {{ field }}
+                    {% if forloop.first %}
+                    <hr>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <button id="add_title_button" type="button" class="add_button"
+                        onclick="addForm('title_form_list', 'empty_title_form', 'title', 'titles')">
+                    Add Title
+                    <i class="icon bi bi-plus"></i>
+                </button>
+            </div>
+            <h5>New Jobs:</h5>
+            <div id="job_forms">
+                {{ job_formset.management_form }}
+                <div id="jobs_error_list" class="errors"></div>
+                <div id="job_form_list"></div>
+                <div id="empty_job_form" class="hidden">
+                    <div class="close" onclick="removeForm(this, 'job_form_list', 'jobs')">
+                        <span class="material-icons-outlined">close</span>
+                    </div>
+                    {% for field in job_formset.empty_form %}
+                    {{ field }}
+                    {% if forloop.first %}
+                    <hr>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <button id="add_job_button" type="button" class="add_button"
+                        onclick="addForm('job_form_list', 'empty_job_form', 'job', 'jobs')">
+                    Add Job
+                    <i class="icon bi bi-plus"></i>
+                </button>
+            </div>
+            <h5>New Skills:</h5>
+            <div id="skill_forms">
+                {{ skill_formset.management_form }}
+                <div id="skills_error_list" class="errors"></div>
+                <div id="skill_form_list">
+                </div>
+                <div id="empty_skill_form" class="hidden">
+                    <div class="close" onclick="removeForm(this, 'skill_form_list', 'skills')">
+                        <span class="material-icons-outlined">close</span>
+                    </div>
+                    {% for field in skill_formset.empty_form %}
+                    {% if forloop.first %}
+                    {{ field }}
+                    <hr>
+                    {% elif forloop.counter == 3 %}
+                    <hr>
+                    <label class="checkbox_label">
+                        Is active skill {{ field }}
+                        <span class="checkbox-container"></span>
+                    </label>
+                    {% else %}
+                    {{ field }}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <button id="add_skill_button" type="button" class="add_button"
+                        onclick="addForm('skill_form_list', 'empty_skill_form', 'skill', 'skills')">
+                    Add Skill
+                    <i class="icon bi bi-plus"></i>
+                </button>
+            </div>
+            <h5>Increased Skills Levels:</h5>
+            <div id="level_forms">
+                {{ level_formset.management_form }}
+                <div id="levels_error_list" class="errors"></div>
+                <div id="level_form_list"></div>
+                <div id="empty_level_form" class="hidden">
+                <span>
+                <div class="close" onclick="removeForm(this, 'level_form_list', 'levels', 'level_input')">
+                    <span class="material-icons-outlined">close</span>
+                </div>
+                Icrease Skill
+                {% for field in level_formset.empty_form %}
+                {{ field }}
+                {% if forloop.first %}
+                by
+                {% endif %}
+                {% endfor %}
+                Levels
+                </span>
+                </div>
+                <button id="add_level_button" type="button" class="add_button"
+                        onclick="addForm('level_form_list', 'empty_level_form', 'level', 'levels', 'level_input')">
+                    Increased Skill Level
+                    <i class="bi bi-arrow-up"></i>
+                </button>
+            </div>
+            <h5>Stats Increase</h5>
+            {% for field in stats_form %}
+            <span class="stat_increase">
+            Increase
+            {{ field.label }}
+            by
+            {{ field }}
+            Points
+        </span>
+            <br>
+            {% endfor %}
+            <h5>New Languages:</h5>
+            <div id="lang_forms">
+                {{ language_formset.management_form }}
+                <div id="langs_error_list" class="errors"></div>
+                <div id="lang_form_list"></div>
+                <div id="empty_lang_form" class="hidden">
+                    <div class="close" onclick="removeForm(this, 'lang_form_list', 'langs', 'lang_form')">
+                        <span class="material-icons-outlined">close</span>
+                    </div>
+                    <span>
+                    Language
+                    {% for field in language_formset.empty_form %}
+
+                    {% if forloop.counter == 2 %}
+                        with comprehension
+                        {{ field }}
+                        %
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                    {% endfor %}
+                </span>
+                </div>
+                <button id="add_lang_button" type="button" class="add_button"
+                        onclick="addForm('lang_form_list', 'empty_lang_form', 'lang', 'langs', 'lang_form')">
+                    Add Language
+                    <i class="icon bi bi-plus"></i>
+                </button>
+            </div>
+            <h5>Increased Language Comprehensions:</h5>
+            <div id="lang_compr_forms">
+                {{ lang_compr_formset.management_form }}
+                <div id="langs_compr_error_list" class="errors"></div>
+                <div id="lang_compr_form_list"></div>
+                <div id="empty_lang_compr_form" class="hidden">
+                    <div class="close"
+                         onclick="removeForm(this, 'lang_compr_form_list', 'langs_compr', 'lang_increase_form')">
+                        <span class="material-icons-outlined">close</span>
+                    </div>
+                    <span>
+                    Increase
+                    {% for field in lang_compr_formset.empty_form %}
+                    {% if forloop.counter == 2 %}
+                        comprehension by
+                        {{ field }}
+                        %
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                    {% endfor %}
+                </span>
+                </div>
+                <button id="add_comprehension_form_button" type="button" class="add_button"
+                        onclick="addForm('lang_compr_form_list', 'empty_lang_compr_form', 'lang_compr', 'langs_compr', 'lang_increase_form')">
+                    Increase Language Comprehension
+                    <i class="bi bi-arrow-up"></i>
+                </button>
+            </div>
+            <input class="submit_button" type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+<script>
+    const totalFormsCounts_id = [
+        `id_titles-TOTAL_FORMS`,
+        `id_jobs-TOTAL_FORMS`,
+        `id_skills-TOTAL_FORMS`,
+        `id_levels-TOTAL_FORMS`,
+        `id_langs-TOTAL_FORMS`,
+        `id_langs_compr-TOTAL_FORMS`,
+    ];
+    totalFormsCounts_id.forEach(FormCountId => {
+        countElement = document.getElementById(FormCountId);
+        countElement.setAttribute("value", 0);
+    });
+
+
+    let allTextareas = document.getElementsByTagName('textarea');
+    for (let textareaEl of allTextareas) {
+        pasteCounterHtml(textareaEl);
+    }
+
+    const form = document.querySelector("#userinfo");
+
+    async function sendData() {
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(`${window.location.origin}/reflection_post`, {
+                method: "POST",
+                body: formData,
+            });
+            var responseData = await response.json();
+        } catch (e) {
+            console.error(e);
+        }
+
+        errorLists = document.getElementsByClassName('errors');
+        for (let i = 0; i < errorLists.length; i++) {
+            errorLists[i].innerHTML = "";
+        }
+
+        let first = true;
+        for (const [key, value] of Object.entries(responseData.errors)) {
+            errorList = document.querySelector(`#${key}_error_list`);
+            errorList.insertAdjacentHTML("afterBegin", '<i class="material-icons" style="color:red">Warning! </i>');
+            errorList.textContent += value[0];
+
+            if (first == true) {
+                errorList.scrollIntoView();
+                first = false;
+            }
+        }
+
+        if (responseData.success) {
+            window.location.replace(`${window.location.origin}/reflection`)
+        }
+    }
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        sendData();
+    });
+</script>
+
+
+{% endblock %}
+
+{% block footer %}| Reflection Creation Page {% endblock %}

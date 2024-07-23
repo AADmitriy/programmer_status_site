@@ -1,0 +1,246 @@
+/*
+This styles are applied to the all pages
+*/
+
+/* this styles make footer stick to the bottom */
+html{
+    position: relative;
+    min-height: 100%;
+}
+
+body{
+    margin-bottom: 60px;
+    color: white;
+    background-image: url("../images/background.jpg");
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+}
+/* --- */
+
+/* main styles */
+::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.main_content {
+    margin: auto;
+    min-height: 100%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: red;
+    }
+
+.add_data_link_wrapper {
+    margin: auto;
+    width: 50%;
+    line-height: 40px;
+    text-align: center;
+}
+
+    .add_data_link_wrapper button,
+    .add_data_link_wrapper a {
+        width: 100%;
+        background-color: white;
+        color: black;
+        border: none;
+        outline: none;
+        border-radius: 8px;
+        font-size: 1em;
+        font-weight: 400;
+        display: inline-block;
+    }
+
+.submit_button,
+.white_button,
+.btn_primary,
+.btn_secondary{
+    background: white;
+    color: black;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.white_button {
+    width: fit-content;
+    height: 35px;
+    margin: 8px 5px;
+}
+
+.submit_button:hover,
+.btn_primary:hover,
+.btn_secondary:hover,
+.white_button:hover {
+    transform: scale(1.02);
+}
+
+.textarea_wrapper {
+    position: relative;
+    padding-bottom: 25px;
+}
+
+    .textarea_wrapper textarea {
+        width: 100%;
+        min-height: 4em;
+        border: 2px solid rgb(255, 255, 255);
+        outline: none;
+        background-color: transparent;
+        backdrop-filter: blur(30px);
+        color: white;
+    }
+
+.the-count {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    font-size: 0.8rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.errors {
+    color: red;
+}
+
+.glass {
+    padding: 0 10 0 10;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.text_content_wrapper {
+    min-height: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-bottom: none;
+    border-top: none;
+}
+
+.flex_wrap_container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form_wrapper {
+    margin: auto;
+    margin-top: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* --- */
+
+/* Navigation bag */
+.navbar-custom {
+     background-color: #0300AB;
+     padding: 10px 0 10px 10px;
+}
+
+.navbar_link,
+.menu-toggle {
+    padding: 5px;
+    margin: 0 5px;
+    font-weight: 400;
+    border-radius: 7px;
+}
+
+.navbar_link {
+    font-size: 1.2em;
+}
+
+    .navbar_link.active {
+        background-color: white;
+        color: black;
+    }
+
+.menu-toggle {
+    font-size: 1.7em;
+    display: none;
+}
+
+@media(max-width: 600px){
+    .hideOnMobile {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+    }
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .sidebar li {
+        width: 100%;
+
+    }
+
+    .sidebar li a {
+        font-size: 1.2em;
+        font-weight: 400;
+        border-radius: 7px;
+        width: 100%;
+        color: black;
+        display: block;
+        margin: 3px 0;
+        padding: 5px 5px 5px 10px;
+    }
+
+    .sidebar li:hover,
+    .sidebar li .active {
+         background-color: rgba(118, 118, 118, 0.5);
+    }
+
+    @media(max-width: 400px){
+        .sidebar {
+            width: 100%;
+        }
+    }
+
+/* --- */
+
+/* Reflection page style */
+.reflection {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid white;
+    word-wrap: break-word;
+}
+/* --- */
+

@@ -1,0 +1,29 @@
+{% extends 'status_info/base.html' %}
+{% load static %}
+
+{% block title %}| Stats Page{% endblock %}
+
+{% block content %}
+<div class="text_content_wrapper glass">
+    <h2 class="text-center">Reflections</h2>
+    <div class="add_data_link_wrapper">
+        <a href="/add_new_reflection">Add New Reflection</a>
+    </div>
+    <div class="text-left py-3">
+        {% for reflection in reflections %}
+        <div class="reflection">
+            <h4 class="reflection_title">{{ reflection.title }}</h4>
+            <hr>
+            <p>{{ reflection.date }}</p>
+            <hr>
+            <p class="reflection_description">{{ reflection.description }}</p>
+            <hr>
+            <p>Gains:</p>
+            <div class="reflection_gains">{{ reflection.gains|linebreaks }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}| Stats Page {% endblock %}

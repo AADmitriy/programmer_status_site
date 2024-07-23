@@ -1,0 +1,32 @@
+{% extends 'status_info/base.html' %}
+{% load static %}
+
+{% block title %}| Log Out Page{% endblock %}
+
+{% block links_and_scripts %}
+<link rel="stylesheet" type="text/css" href="{% static 'status_info/css/login_signup_logout.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+{% endblock %}
+
+{% block content %}
+<div class="form_wrapper glass">
+    <div class="form_box">
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <h2 class="exit-icon"><i class="bi bi-door-open"></i></h2>
+            <p>Are you sure you want to logout? You would need to reenter username and password</p>
+            <button class="btn_primary" id="return_button">Return to previous page</button>
+            <button class="btn_secondary" type="submit">Log Out</button>
+        </form>
+    </div>
+</div>
+<script>
+    return_button = document.getElementById("return_button");
+    return_button.addEventListener("click", (event) => {
+          event.preventDefault();
+          window.history.back();
+    });
+</script>
+{% endblock %}
+
+{% block footer %}| Log Out Page {% endblock %}

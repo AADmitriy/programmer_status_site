@@ -1,0 +1,81 @@
+{% extends 'status_info/base.html' %}
+{% load static %}
+
+{% block title %}| Quests Page{% endblock %}
+
+{% block links_and_scripts %}
+<link rel="stylesheet" type="text/css" href="{% static 'status_info/css/quests_styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="text_content_wrapper glass">
+    <h2 class="text-center">Quests</h2>
+    <div class="add_data_link_wrapper">
+        <a href="/add_new_quest">Add New Quest</a>
+    </div>
+    <div class="text-left py-3">
+        {% for quest in quests %}
+        <div class="current_quest">
+            <h6>{{ quest.name }}</h6>
+            <hr>
+            <p>{{ quest.date }}</p>
+            <hr>
+            <p>{{ quest.description }}</p>
+            <div class="quest_buttons">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="hidden">{{ form }}</div>
+
+                    <input class="btn_primary" type="submit" name="complete"
+                           onclick="completeQuest(this, '{{ quest.name }}', true)" value="Complete">
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+        {% for quest in old_quests %}
+        <div class="old_quest">
+            <h6>{{ quest.name }}</h6>
+            <hr>
+            <p>{{ quest.date }}</p>
+            <hr>
+            <p>{{ quest.description }}</p>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="hidden">{{ form }}</div>
+                <input class="btn_primary" type="submit" name="uncomplete"
+                       onclick="completeQuest(this, '{{ quest.name }}', false)" value="Uncomplete">
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script>
+    async function sendData(form) {
+        formData = new FormData(form);
+        try {
+            const response = await fetch(`${window.location.origin}/quest_completion_post`, {
+                method: "POST",
+                body: formData,
+            });
+            var responseData = await response.json();
+        } catch (e) {
+            console.error(e);
+        }
+        if (responseData['success']) {
+            location.reload();
+        }
+        console.log(responseData);
+    }
+    function completeQuest(buttonElement, questName, complete) {
+        event.preventDefault();
+        form = buttonElement.closest('form');
+        questNameField = form.querySelector("input[name=quest_name]");
+        questCompleteField = form.querySelector("input[name=complete]");
+        questNameField.value = questName;
+        questCompleteField.checked = complete;
+        sendData(form);
+    }
+</script>
+{% endblock %}
+
+{% block footer %}| Quests Page {% endblock %}

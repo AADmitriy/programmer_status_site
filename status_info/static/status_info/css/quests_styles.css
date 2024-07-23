@@ -1,0 +1,100 @@
+/*
+This styles are applied to the quests page and quest creation page
+*/
+
+.current_quest {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid white;
+}
+
+.old_quest {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 3px groove grey;
+    color: grey;
+}
+
+.form_wrapper {
+    width: 800px;
+    height: fit-content;
+    margin-top: 30px;
+}
+
+    @media(max-width: 970px) {
+        .form_wrapper {
+            width: 100%;
+        }
+    }
+
+.quest_form_box {
+    width: 100%;
+    padding: 30px;
+}
+
+    .quest_form_box h2{
+        text-align: center;
+    }
+
+.errors {
+    margin-bottom: 10px;
+}
+
+.input_box {
+    position: relative;
+    width: 25em;
+    height: 50px;
+    margin: auto;
+    margin-bottom: 25px;
+    border-bottom: 2px solid rgb(255, 255, 255);
+}
+
+    @media(max-width: 650px) {
+        .input_box {
+            width: 100%;
+        }
+    }
+
+    .input_box input {
+        width: 100%;
+        height: 100%;
+        padding: 0 5;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 1em;
+        font-weight: 500;
+    }
+
+    .input_box label {
+        position: absolute;
+        left: 0%;
+        top: 50%;
+        padding-left: 5px;
+        transform: translateY(-50%);
+        font-size: 1em;
+        font-weight: 400;
+        pointer-events: none;
+        transition: .5s;
+    }
+
+    .input_box input:focus~label,
+    .input_box input:valid~label {
+        top: -1px;
+    }
+
+.textarea_wrapper {
+    width: 100%;
+    margin: 5px auto;
+}
+
+.btn_primary {
+    width: fit-content;
+    height: 30px;
+}
+
+.submit_button {
+    height: 35px;
+    background: white;
+}

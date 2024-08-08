@@ -6,6 +6,11 @@ reflection to change his stats, add
 skills e.g. and also user can create quests 
 to set study or work goals. You can ask ChatGPT to create descriptions for quests, skills, titles, job e.g.
 
+If you have Docker installed you can run this site localy by opening project directory from console and running: <br />
+`docker build -t site_image .` <br />
+`docker run --rm -it -dp 8000:8000 site_image` <br />
+And then press Ctrl + C to stop container 
+
 ### Login page
 ![Alt text](images_for_readme/system_site_login.JPG)
 ### Status page

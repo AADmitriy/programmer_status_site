@@ -11,6 +11,15 @@ If you have Docker installed you can run this site localy by opening project dir
 `docker run --rm -it -dp 8000:8000 site_image` <br />
 And then press Ctrl + C to stop container 
 
+<br/>
+
+Features of this site:
+- Dynamical forms implemented using Django formsets and JavaScript
+- Account's system
+- Mobile-friendly layout
+- Full unit test coverage with Selenium
+- APIs for submitting user input that are making forms more responsive
+
 ### Login page
 ![Alt text](images_for_readme/system_site_login.JPG)
 ### Status page
